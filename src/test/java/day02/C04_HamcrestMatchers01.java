@@ -46,7 +46,7 @@ public class C04_HamcrestMatchers01 {
                 .body("completed",equalTo(false))
                 .body("userId",equalTo(2));
 
-        // Soft Assertion mantığı ile assertion yapacaksak n body() methodu içerisinde assertionlar yazılır
+        // Soft Assertion mantığı ile assertion yapacaksak aynı body() methodu içerisinde assertionlar yazılır
         response.
                 then()
                 .statusCode(200)
@@ -55,7 +55,7 @@ public class C04_HamcrestMatchers01 {
                         "completed",equalTo(false),
                         "userId",equalTo(2)
                 );
-        // equalto() : path tanımlanan verinin değerini assert ediyor
+        // equalTo() : path(yukarıdaki "title" gibi yerler ) tanımlanan verinin değerini assert ediyor.
         // containsString() : bodynin string değeri içerip içermediğini assert eder
 
 

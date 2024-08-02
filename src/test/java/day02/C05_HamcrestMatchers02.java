@@ -1,12 +1,14 @@
 package day02;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 public class C05_HamcrestMatchers02 {
-     /*
+        /*
     Given
         https://jsonplaceholder.typicode.com/todos
     When
@@ -24,15 +26,26 @@ public class C05_HamcrestMatchers02 {
 */
 
     @Test
-    public void test01() {
-        //    1. Set the URL
+    public void test01(){
+        //     1. Set the URL
         String url = "https://jsonplaceholder.typicode.com/todos";
         //    2. Set the expected data
         //    3. Send the request and get the response
         Response response = given().when().get(url);
        // response.prettyPrint();
         //    4. Do Assertion
+        response
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                // .body("[0].title",equalTo("delectus aut autem"));
+                .body("id",hasSize(200))
+                .body("title",hasItem("quis eius est sint explicabo"))
+                .body("userId",hasItems(2,7,9));
 
-
+        // hasSize() : listenin size ını assert eder
+        // hasItem() : listede bir elemanın bulunup bulunmadığını kontrol eder (contains gibi...)
+        // hasItems() : listede çoklu eleman sorgularında kullanılır. (containsAll() gibi...)
     }
+
 }

@@ -1,6 +1,5 @@
 package day02;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -10,12 +9,13 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class C02_HeaderAsserions {
+public class C02_HeaderAssertions {
     /*
-     Gherkin diliyle
-    Given:pre condition on kosulları anları
+     Gherkin language -->(cucumberda ögrendik)
+
+    Given:pre condition on kosulları anlatır
         https://restful-booker.herokuapp.com/booking
-    When:aksiyonlari belirten assertionlari yapar
+    When:aksiyonlar baslar
         User sends a GET Request to the url
     Then assertionlari içeririr
         HTTP Status Code should be 200
@@ -29,6 +29,7 @@ public class C02_HeaderAsserions {
         Print all headers on console
 */
   /*
+  rehber;
     Steps to follow in API Testing:
     1. Set the URL
     2. Set the expected data
@@ -38,13 +39,13 @@ public class C02_HeaderAsserions {
 
     @Test
     public void headerTest() {
-        // 1. Set the URL
+        //1. Set the URL
         String url = "https://restful-booker.herokuapp.com/booking";
-        //  2. Set the expected data
+        //2. Set the expected data //atlıyoruz cunku post ve put requestlerde kullanırız daha cok o yuzden atlıyoruz bazen gette kullanılabilir
         //3. Send the request and get the response
         //4. Do Assertion
 
-       //1.yol
+        // 1. Yol: Assertionlar method chain şeklinde yapılabilir (fluent form tarzı )
         given().
                 when().
                 get(url).
@@ -56,30 +57,33 @@ public class C02_HeaderAsserions {
                 header("Connection", is("keep-alive")).//3.yol
                 statusLine("HTTP/1.1 200 OK");
 
-      //2.yol
-        //  2. Set the expected data
+        // 2. Yol : Basamak basamak ilerlemek... tavsiye edilen yol
+        //    2. Set the expected data  -- > daha sonra uygulayacağız.
+        //    3. Send the request and get the response
+        Response response = given().when().get(url);
+        // response.prettyPrint();
+        //    4. Do Assertion
 
-        //3. Send the request and get the response
-        Response response=  given().when().get(url);
-       // response.prettyPrint();
-
-        //4. Do Assertion   header("Server", "Cowboy");
-        //method chain olarak  devam edilebilir.. fluent form
+        // method chain olarak devam edilebilir...
         response.
                 then().
                 statusCode(200).
                 statusLine("HTTP/1.1 200 OK").
-                contentType(ContentType.JSON);
-       // TestNg Assertionları gibi yöntemler ile de devam edebiliriz.
-        int statusCode = response.statusCode();
-        Assert.assertEquals(statusCode,200);
-        String statusLine = response.statusLine();
-        Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
-        String contentType = response.contentType();
-        Assert.assertEquals(contentType,"application/json; charset=utf-8");
-        String connectionHeader = response.header("Connection");
-        Assert.assertEquals(connectionHeader,"keep-alive");
+                contentType(ContentType.JSON).
+                header("Connection",equalTo("keep-alive")).
+                header("Connection","keep-alive").
+                header("Connection",is("keep-alive"));
+        // TestNg Assertionları gibi yöntemler ile de devam edebiliriz.
 
+        int statusCode = response.statusCode();
+        String statusLine = response.statusLine();
+        String contentType = response.contentType();
+        String conn = response.header("connection");
+
+        Assert.assertEquals(statusCode,200);
+        Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
+        Assert.assertEquals(contentType,"application/json; charset=utf-8");
+        Assert.assertEquals(conn,"keep-alive");
 
     }
 
