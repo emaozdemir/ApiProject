@@ -46,6 +46,8 @@ public class C05_HamcrestMatchers02 {
         // hasSize() : listenin size ını assert eder
         // hasItem() : listede bir elemanın bulunup bulunmadığını kontrol eder (contains gibi...)
         // hasItems() : listede çoklu eleman sorgularında kullanılır. (containsAll() gibi...)
+
+      //  hoca kaynakca verecek bide interview sorusu
     }
 
 }
