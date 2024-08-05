@@ -59,6 +59,22 @@ public class C04_HamcrestMatchers01 {
         // containsString() : bodynin string değeri içerip içermediğini assert eder
 
 
+        /*
+        Hamcrest Matchers, Java'da test yazarken kullanılan bir kütüphanedir.
+        Test senaryolarını daha okunabilir ve anlamlı hale getirir.
+
+        Ne Yapar?
+        Durum Kodu ve İçerik Tipi Kontrolü: Örneğin, yanıtın HTTP durum kodunun 200 olduğunu ve JSON formatında olduğunu doğrular.
+        Veri Doğrulama: Yanıtın belirli alanlarının beklenen değerlere sahip olup olmadığını kontrol eder.
+        Çoklu Doğrulama: Birden fazla koşulu aynı anda doğrulama imkanı sağlar.
+
+        Yaygın Kullanılan Matchers
+        equalTo(): Değerin eşitliğini kontrol eder.
+        is(): Değerin belirtilen koşulla aynı olup olmadığını kontrol eder.
+        containsString(): Metnin belirli bir alt dizeyi içerip içermediğini kontrol eder.
+        */
+
+
 
 
 

@@ -25,7 +25,7 @@ public class C01_SimpleRequestResponse {
 
     public static void main(String[] args) {
 
-        // Basit bir Api sorgusu için RestAssured classından ilgili method çağrılır
+        // Basit bir Api sorgusu için RestAssured classından ilgili method çağrılır .   response bir interface
         Response response = RestAssured.get("https://restful-booker.herokuapp.com/booking");
 
         System.out.println("****************** How to print Response **********************");

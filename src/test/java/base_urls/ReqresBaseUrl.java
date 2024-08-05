@@ -8,9 +8,11 @@ public class ReqresBaseUrl {
 
     protected RequestSpecification spec;  // Şu an spec null'dır. Her metoddan önce spec objesine değer atamak istiyorum.
 
+    //tekrarli requestlerde spec kullanıp kolaylastırırız.
+
     @BeforeMethod
     public void setUp() {
-        spec = new RequestSpecBuilder()
+        spec = new RequestSpecBuilder()//burdaki spec header token,content type vs vs herseyi tutar.alet cantası gibi tutar.
                 .setBaseUri("https://reqres.in/api")
                 .build();
     }
@@ -34,7 +36,7 @@ public class ReqresBaseUrl {
            Response response = given(spec).when().get("{first}/{second}");
          - Bu yer tutucular, pathParams ile tanımlanan parametrelerle doldurulur:
            {first} -> "users", {second} -> 3.
-         - Sonuç olarak URL: https://reqres.in/api/users/3.
+         - Sonuç olarak URL: https://reqres.in/api/users/3.->end point
 
       Neden Yol Parametreleri Kullanılır?
 
