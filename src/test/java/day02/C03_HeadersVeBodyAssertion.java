@@ -38,7 +38,7 @@ public class C03_HeadersVeBodyAssertion {
         //    4. Do Assertion
         // Method Chain yöntemiyle
         response.
-                then().
+                then().//body assertion
                 statusCode(404).
                // contentType(ContentType.JSON).//JSON DEĞİL HATA VERİR. soruda gorev yoktu ama alttaki satırla evet text oldugunu dogrulayabilirz.
                 contentType(ContentType.TEXT).

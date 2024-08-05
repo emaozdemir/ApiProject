@@ -1,6 +1,7 @@
 package base_urls;
 
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeMethod;
 
@@ -14,6 +15,7 @@ public class ReqresBaseUrl {
     public void setUp() {
         spec = new RequestSpecBuilder()//burdaki spec header token,content type vs vs herseyi tutar.alet cantası gibi tutar.
                 .setBaseUri("https://reqres.in/api")
+              //  .setContentType(ContentType.JSON)// BUNUN GİBİ TEKRARLİ KULLANILCAK HERSEYİ EKLEYEBİLİRİZ
                 .build();
     }
 

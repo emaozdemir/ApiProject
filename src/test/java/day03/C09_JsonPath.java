@@ -9,11 +9,15 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
+import java.util.List;
+import java.util.Objects;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class C09_JsonPath extends RestFullBookerBaseUrl {
          /*
+         zaman gectikce clas calısmayabilir o yuzden postmande once postla creta etmemiz lazım
         Given
             https://restful-booker.herokuapp.com/booking/2
         When
@@ -41,7 +45,7 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
     public void test01() {
         // Set Url
         spec.pathParams("first", "booking",
-                "second", 1120);
+                "second", 670);
 
         // Set Expected Data
 
@@ -59,7 +63,7 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
                 .body("firstname", equalTo("tim"))
                 .body("lastname", equalTo("Brown"))
                 .body("totalprice", equalTo(111))
-              //  .body("depositpaid", equalTo(true))
+               .body("depositpaid", equalTo(true))
                 .body("bookingdates.checkin", equalTo("2025-01-01"))
                 .body("bookingdates.checkout", equalTo("2025-02-02"));
 
@@ -67,7 +71,7 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
         // jsonpath() methodu response Jsonpath classına çevirir. Bu classtan get
         // methodları ile istenilen data kolaylıkla extract edilebilir.
 
-        JsonPath json = response.jsonPath();
+        JsonPath json = response.jsonPath();//responce yi jsanlastırıp degerlerini kullanacağız
         String firstName = json.getString("firstname");
         String lastname = json.getString("lastname");
         int totalprice = json.getInt("totalprice");
@@ -80,7 +84,7 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
         Assert.assertEquals(firstName, "tim");
         Assert.assertEquals(lastname, "Brown");
         Assert.assertEquals(totalprice, 111);
-       // Assert.assertEquals(depositpaid, true);
+        Assert.assertEquals(depositpaid, true);
         Assert.assertEquals(checkin, "2025-01-01");
         Assert.assertEquals(checkout, "2025-02-02");
         Assert.assertEquals(additionalneeds, "Breakfast");
@@ -91,12 +95,16 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
         softAssert.assertEquals(firstName,"tim");
         softAssert.assertEquals(lastname,"Brown");
         softAssert.assertEquals(totalprice,111);
-      //  softAssert.assertEquals(depositpaid,true);
+       softAssert.assertEquals(depositpaid,true);
         softAssert.assertEquals(checkin,"2025-01-01");
         softAssert.assertEquals(checkout,"2025-02-02");
         softAssert.assertEquals(additionalneeds,"Breakfast");
 
         softAssert.assertAll();
 
+        //list olarak alalım
+      //  List<Objects> dataList=jsonPath.getList("data.id");
+        List<Objects> dataList=json.getList("bookingid");
+        System.out.println("dataList = " + dataList);
     }
 }
