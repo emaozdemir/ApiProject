@@ -4,12 +4,14 @@ import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.JsonPlaceHolderTestData;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static utilities.JsonPlaceHolderTestData.JsonPlaceHolderMapper;
 
 public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
             /*
@@ -40,10 +42,10 @@ public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
         spec.pathParam("first","todos");
 
         // Set Expected Data
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("userId",21);
-        payload.put("title","Tidy your apartment");
-        payload.put("completed",false);
+        Map<String, Object> payload = JsonPlaceHolderTestData
+                .JsonPlaceHolderMapper(55,
+                        "Tidy your room",
+                        false);
 
         // Send Request get Response
         Response response = given(spec)
