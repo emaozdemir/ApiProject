@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static utilities.JsonPlaceHolderTestData.JsonPlaceHolderMapper;
+import static utilities.JsonPlaceHolderTestData.jsonPlaceHolderMapper;
 
 public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
             /*
@@ -42,7 +42,7 @@ public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
         spec.pathParam("first","todos");
 
         // Set Expected Data
-        Map<String, Object> payload = JsonPlaceHolderTestData.JsonPlaceHolderMapper(55,
+        Map<String, Object> payload = JsonPlaceHolderTestData.jsonPlaceHolderMapper(55,
                         "Tidy your room",
                         false);
 
