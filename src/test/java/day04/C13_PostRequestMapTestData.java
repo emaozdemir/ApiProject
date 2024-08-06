@@ -42,8 +42,7 @@ public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
         spec.pathParam("first","todos");
 
         // Set Expected Data
-        Map<String, Object> payload = JsonPlaceHolderTestData
-                .JsonPlaceHolderMapper(55,
+        Map<String, Object> payload = JsonPlaceHolderTestData.JsonPlaceHolderMapper(55,
                         "Tidy your room",
                         false);
 
@@ -55,6 +54,7 @@ public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
 
         // Do Assertion
+        //1.yol assert etmek için
         response
                 .then()
                 .statusCode(201)
@@ -62,12 +62,16 @@ public class C13_PostRequestMapTestData extends JsonPlaceHolderBaseUrl {
                 .body("title",equalTo(payload.get("title")))
                 .body("completed",equalTo(payload.get("completed")));
 
-
+        //2.yol assert etmek için
         // Alternatif olarak responsu Map olarak dönüştürebiliriz
         Map<String,Object> actualData = response.as(Map.class); // De-Serialization : Json Objesini Java Objesine çevirme işlemine denir
 
         Assert.assertEquals(actualData.get("userId"),payload.get("userId"));
         Assert.assertEquals(actualData.get("title"),payload.get("title"));
         Assert.assertEquals(actualData.get("completed"),payload.get("completed"));
+
+        /*
+        javada her class bir data tipidir ama her data tipi bir clas değildir.primitif datalar gibi onlar bir clas değildir
+         */
     }
 }

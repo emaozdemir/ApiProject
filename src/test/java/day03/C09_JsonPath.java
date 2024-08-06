@@ -45,7 +45,7 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
     public void test01() {
         // Set Url
         spec.pathParams("first", "booking",
-                "second", 670);
+                "second", 1569);
 
         // Set Expected Data
 
@@ -75,7 +75,7 @@ public class C09_JsonPath extends RestFullBookerBaseUrl {
         String firstName = json.getString("firstname");
         String lastname = json.getString("lastname");
         int totalprice = json.getInt("totalprice");
-        boolean depositpaid = json.getBoolean("firstname");
+        boolean depositpaid = json.getBoolean("depositpaid");
         String checkin = json.getString("bookingdates.checkin");
         String checkout = json.getString("bookingdates.checkout");
         String additionalneeds = json.getString("additionalneeds");

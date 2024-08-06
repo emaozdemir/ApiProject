@@ -38,7 +38,7 @@ public class C10_GroovyLanguage extends JsonPlaceHolderBaseUrl {
         //response.prettyPrint();
 
         // Do Assertions
-        JsonPath json = response.jsonPath();
+        JsonPath json = response.jsonPath();//JsonPath data türünten bir json create ettik
         // System.out.println(json.getString("[3].title")); // Herhangi bir datayı Jsonpath ile çekebilirim
 
         // 1)Status code is 200
@@ -84,11 +84,13 @@ public class C10_GroovyLanguage extends JsonPlaceHolderBaseUrl {
         System.out.println("titlesLessThan5 = " + titlesLessThan5);
         Assert.assertTrue(titlesLessThan5.contains("delectus aut autem"));
 
+        //sadece tek bir elemanı alma sekli 1.yol
         List<Integer> id = json.getList("findAll{it.title='delectus aut autem'}.id");
         Integer idOfTitle = id.get(0);
         System.out.println("idOfTitle = " + idOfTitle);
-
+        //sadece tek bir elemanı alma sekli 2.yol
         int idOfTitle2 = (int)json.getList("findAll{it.title='delectus aut autem'}.id").getFirst();
+        System.out.println("idOfTitle2 = " + idOfTitle2);
 
     }
 }

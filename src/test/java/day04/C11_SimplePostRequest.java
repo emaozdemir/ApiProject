@@ -40,7 +40,7 @@ public class C11_SimplePostRequest extends JsonPlaceHolderBaseUrl {
         //    1. Set the URL
         spec.pathParam("first", "todos");
 
-        // 2.set expected data
+        // 2.set expected data //bodyi kurgula demek //databaseye yuklemek için bu yapıyı kurarız.
         String payload = """
                 {
                   "userId": 55,

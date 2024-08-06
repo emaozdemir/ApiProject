@@ -48,7 +48,7 @@ public class C12_PostRequestMap extends JsonPlaceHolderBaseUrl {
 
         // Send Request get Response
         Response response = given(spec)
-                .body(payload)  // Serialization --> Java Objesini Json formatına dönüştürme işlemine denir
+                .body(payload)  // Serialization --> Java Objesini Json formatına dönüştürme işlemine denir//gidip pom.xmle ekledik
                 .when()        // Serialization için "Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath"
                 .post("{first}");
         response.prettyPrint();
@@ -57,7 +57,7 @@ public class C12_PostRequestMap extends JsonPlaceHolderBaseUrl {
         response
                 .then()
                 .statusCode(201)
-                .body("userId",equalTo(payload.get("userId")))
+                .body("userId",equalTo(payload.get("userId")))//De-Serialization : Json Objesini Java Objesine çevirme işlemine denir
                 .body("title",equalTo(payload.get("title")))
                 .body("completed",equalTo(payload.get("completed")));
 
