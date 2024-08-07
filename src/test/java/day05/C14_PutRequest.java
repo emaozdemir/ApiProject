@@ -42,7 +42,7 @@ public class C14_PutRequest extends JsonPlaceHolderBaseUrl {
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
-        Response response = given(spec).body(expectedData).put("{first}/{second}");
+        Response response = given(spec).body(expectedData).put("{first}/{second}");//given önkosullar spec bizim o on kosullarımızı içeriyor
         response.prettyPrint();
 
         //Do assertion

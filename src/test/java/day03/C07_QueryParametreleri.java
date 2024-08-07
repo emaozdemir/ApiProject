@@ -1,6 +1,6 @@
 package day03;
 
-import base_urls.RestFullBookerBaseUrl;
+import base_urls.RestFulBookerBaseUrl;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class C07_QueryParametreleri extends RestFullBookerBaseUrl {
+public class C07_QueryParametreleri extends RestFulBookerBaseUrl {
 
     //============== Query FİLTRELEME==========
           /*

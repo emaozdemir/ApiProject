@@ -5,7 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeMethod;
 
-public class RestFullBookerBaseUrl {
+public class RestFulBookerBaseUrl {
 
     protected RequestSpecification spec;  // nulldir. Her methoddan önce spec objesine değer atamak istiyorum
 

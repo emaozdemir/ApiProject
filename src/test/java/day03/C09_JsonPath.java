@@ -1,6 +1,6 @@
 package day03;
 
-import base_urls.RestFullBookerBaseUrl;
+import base_urls.RestFulBookerBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -15,7 +15,7 @@ import java.util.Objects;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class C09_JsonPath extends RestFullBookerBaseUrl {
+public class C09_JsonPath extends RestFulBookerBaseUrl {
          /*
          zaman gectikce clas calısmayabilir o yuzden postmande once postla creta etmemiz lazım
         Given

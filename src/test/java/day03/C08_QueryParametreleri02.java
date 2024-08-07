@@ -1,12 +1,12 @@
 package day03;
 
-import base_urls.RestFullBookerBaseUrl;
+import base_urls.RestFulBookerBaseUrl;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
 
-public class C08_QueryParametreleri02 extends RestFullBookerBaseUrl {
+public class C08_QueryParametreleri02 extends RestFulBookerBaseUrl {
 
 
     @Test

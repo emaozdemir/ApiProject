@@ -1,7 +1,6 @@
 package day05;
 
-import base_urls.RestFullBookerBaseUrl;
-import io.restassured.http.ContentType;
+import base_urls.RestFulBookerBaseUrl;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -11,7 +10,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class C16_PostRequestNestedMap extends RestFullBookerBaseUrl {
+public class C16_PostRequestNestedMap extends RestFulBookerBaseUrl {
     /*
     Given
         1) https://restful-booker.herokuapp.com/booking
