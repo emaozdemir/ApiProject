@@ -1,5 +1,4 @@
 package homework;
 
-public class HW07 {
-
+public class HW010 {
 }

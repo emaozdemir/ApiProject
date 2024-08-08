@@ -1,5 +1,6 @@
 package pojos;
 
+
 public class BookingPojo {
 
     private String firstname;
@@ -7,6 +8,11 @@ public class BookingPojo {
     private Integer totalprice;
     private Boolean depositpaid;
     private BookingDatesPojo bookingdates;
+    /*
+    her sınıf bir veri türüdür.
+    her veri türü bir sınıf değildir (primitif veri türleri sınıf değildir)(int, boolean, char, double).
+    Primitif veri türlerinin doğrudan sınıfı yoktur, ancak onların karşılığı olan sarmalayıcı sınıflar (wrapper classes) vardır.
+     */
     private String additionalneeds;
 
     public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDatesPojo bookingdates, String additionalneeds) {

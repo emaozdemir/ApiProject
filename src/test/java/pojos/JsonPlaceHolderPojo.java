@@ -2,19 +2,20 @@ package pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)//bilinmeyen bir değer varsa görmezden gel bu durum databaseden gelen taskte karsılıgı olmayan ıd için filan gerekli
 public class JsonPlaceHolderPojo {
-    // private variables oluşturulur
+    // private variables oluşturulur(null durumunda)
     private Integer userId;
     private String title;
     private Boolean completed;
 
     // Constructorlar oluşturulur (default ve tüm parametreleri içeren)
-
     public JsonPlaceHolderPojo() {
     }
 
     // Default constructor de-serialization aşamasında gerekebiliyor.
+
+
     public JsonPlaceHolderPojo(Integer userId, String title, Boolean completed) {
         this.userId = userId;
         this.title = title;

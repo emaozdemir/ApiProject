@@ -41,6 +41,7 @@ public class C19_PostRequestPojo extends JsonPlaceHolderBaseUrl {
 
         // Set Expected Data
         JsonPlaceHolderPojo payload = new JsonPlaceHolderPojo(55,"Tidy your room",false);
+        //eger istersek getle getirebiliriz hatta setle değiliştirebiliriz.
         System.out.println("payload.getUserId() = " + payload.getUserId());
         System.out.println("payload.getTitle() = " + payload.getTitle());
         System.out.println("payload.getCompleted() = " + payload.getCompleted());

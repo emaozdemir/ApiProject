@@ -20,30 +20,30 @@ public class C20_GetRequestNestedPojo extends RestFulBookerBaseUrl {
         Then
             Status code should be 200
             Response body should be like that;
-            {
-        "firstname": "Süleyman",
-        "lastname": "Kahve",
-        "totalprice": 111,
-        "depositpaid": true,
-        "bookingdates": {
-            "checkin": "2024-01-01",
-            "checkout": "2024-02-01"
-                        },
-        "additionalneeds": "Breakfast"
-            }
+    {
+    "firstname" : "tim",
+    "lastname" : "Brown",
+    "totalprice" : 111,
+    "depositpaid" : true,
+    "bookingdates" : {
+        "checkin" : "2025-01-01",
+        "checkout" : "2025-02-02"
+    },
+    "additionalneeds" : "Breakfast"
+}
 
 */
     @Test
     public void test01(){
         // Set Url
         spec.pathParams("first","booking"
-                ,"second",2225);
+                ,"second",2414);
 
-        // Set Expected Data
+        // Set Expected Data ben bu sekilde bir data bekliyorum
 
-        BookingDatesPojo bookingDates = new BookingDatesPojo("2024-01-01","2024-02-01");
-        BookingPojo expectedData = new BookingPojo("Süleyman",
-                "Kahve",
+        BookingDatesPojo bookingDates = new BookingDatesPojo("2025-01-01","2025-02-02");
+        BookingPojo expectedData = new BookingPojo("tim",
+                "Brown",
                 111,
                 true,
                 bookingDates,
@@ -54,12 +54,15 @@ public class C20_GetRequestNestedPojo extends RestFulBookerBaseUrl {
         Response response = given(spec).when().get("{first}/{second}");
 
         // Do Assertions
+
+        //1.yontem body assertion
         response
                 .then()
                 .body("bookingdates.checkin", equalTo(expectedData.getBookingdates().getCheckin()))
                 .body("bookingdates.checkin", equalTo(bookingDates.getCheckin()));
-        BookingPojo actualData = response.as(BookingPojo.class);
 
+        //2. yontem map assertion
+        BookingPojo actualData = response.as(BookingPojo.class);//pojo clasından
         Assert.assertEquals(actualData.getFirstname(),expectedData.getFirstname());
         Assert.assertEquals(actualData.getLastname(),expectedData.getLastname());
         Assert.assertEquals(actualData.getDepositpaid(),expectedData.getDepositpaid());

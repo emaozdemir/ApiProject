@@ -46,7 +46,7 @@ public class HW05 extends ReqresBaseUrl {
 
          // Send Request get Response İsteği Gönder ve Yanıtı Al
          Response response = given(spec)
-                 .body(payload)  // Serialization --> Java Objesini Json formatına dönüştürme işlemine denir//gidip pom.xmle ekledik
+                 .body(payload)  // Serialization --> Java Objesini Json/XML formatına dönüştürme işlemine denir/(gidip pom.xmle dep ekledik)
                  .when()        // Serialization için "Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath"
                  .post("{first}");
          response.prettyPrint();
@@ -55,12 +55,12 @@ public class HW05 extends ReqresBaseUrl {
          response
                  .then()
                  .statusCode(201) // Durum Kodunu Doğrula
-                 .body("name",equalTo(payload.get("name")))// Yanıt bodysini Doğrula//De-Serialization : Json Objesini Java Objesine çevirme işlemine denir
+                 .body("name",equalTo(payload.get("name")))// Yanıt bodysini Doğrula//De-Serialization : JSON formatını Java Objesine çevirme işlemine denir
                  .body("job",equalTo(payload.get("job")));
 
 
-         // Alternatif olarak responsu(yanıtı) Map olarak dönüştürebiliriz ve değerleri doğrulayabiliriz
-         Map<String,Object> actualData = response.as(Map.class); // De-Serialization : Json Objesini Java Objesine çevirme işlemine denir
+         // Alternatif olarak responsu Map olarak dönüştürebiliriz ve değerleri doğrulayabiliriz
+         Map<String,Object> actualData = response.as(Map.class); // De-Serialization : Json/XML formatını Java Objesine çevirme işlemine denir
 //         üst satırda, response objesi (REST API'den gelen yanıt) Map sınıfına dönüştürülüyor.
 //         response.as(Map.class) ifadesi, yanıtı Map<String, Object> türüne dönüştürür.
          Assert.assertEquals(actualData.get("name"),payload.get("name"));

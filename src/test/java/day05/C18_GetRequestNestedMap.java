@@ -36,7 +36,7 @@ public class C18_GetRequestNestedMap extends RestFulBookerBaseUrl {
     @Test
     public void getRequestNestedMapTest() {
         //Set the url
-        spec.pathParams("first", "booking", "second", 200);
+        spec.pathParams("first", "booking", "second", 19);
 
         //Set the expected data
         Map<String, String> bookingDatesMap = RestfulBookerTestData.bookingDatesMapper("2018-01-01", "2019-01-01");
@@ -62,5 +62,22 @@ public class C18_GetRequestNestedMap extends RestFulBookerBaseUrl {
 
         assertEquals(actualData.get("additionalneeds"), expectedData.get("additionalneeds"));
 
+
+        // methodla assertions
+       // verifyResponseData(response.statusCode(), actualData, expectedData, bookingDatesMap);
+
     }
+//    // Method to verify the response data
+//    private void verifyResponseData(int statusCode, Map<String, Object> actualData, Map<String, Object> expectedData, Map<String, String> bookingDatesMap) {
+//        assertEquals(statusCode, 200);
+//        assertEquals(actualData.get("firstname"), expectedData.get("firstname"));
+//        assertEquals(actualData.get("lastname"), expectedData.get("lastname"));
+//        assertEquals(actualData.get("totalprice"), expectedData.get("totalprice"));
+//        assertEquals(actualData.get("depositpaid"), expectedData.get("depositpaid"));
+//
+//        assertEquals(((Map) actualData.get("bookingdates")).get("checkin"), bookingDatesMap.get("checkin"));
+//        assertEquals(((Map) actualData.get("bookingdates")).get("checkout"), bookingDatesMap.get("checkout"));
+//
+//        assertEquals(actualData.get("additionalneeds"), expectedData.get("additionalneeds"));
+//    }
 }
