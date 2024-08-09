@@ -50,8 +50,8 @@ public class C25_PostObjectMapperPojo extends JsonPlaceHolderBaseUrl {
                  "completed": false
                  }""";
         ObjectMapper mapper = new ObjectMapper();
-        JsonPlaceHolderPojo payload = mapper.readValue(expectedStr,JsonPlaceHolderPojo.class);
-        System.out.println("payload = " + payload);
+        JsonPlaceHolderPojo payload = mapper.readValue(expectedStr,JsonPlaceHolderPojo.class);//JsonPlaceHolderPojo a donusturduk
+        System.out.println("payload = " + payload);//pojo yazdırır
 
         // Send Request And Get Response
         Response response = given(spec).body(payload).post("{first}");
@@ -63,6 +63,7 @@ public class C25_PostObjectMapperPojo extends JsonPlaceHolderBaseUrl {
         Assert.assertEquals(actualData.getUserId(),payload.getUserId());
         Assert.assertEquals(actualData.getTitle(),payload.getTitle());
         Assert.assertEquals(actualData.getCompleted(),payload.getCompleted());
+
 
     }
 }

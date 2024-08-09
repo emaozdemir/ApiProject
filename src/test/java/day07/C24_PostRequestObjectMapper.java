@@ -49,17 +49,22 @@ public class C24_PostRequestObjectMapper  extends JsonPlaceHolderBaseUrl {
                  "completed": false
                  }""";
         ObjectMapper mapper = new ObjectMapper();
-        Map<String,Object> payload = mapper.readValue(expectedStr, Map.class);
+        //donusen mapi Stringiobjecte donusturme       //stringi map e donusturme
+        Map<String,Object> payload = mapper.readValue(expectedStr, Map.class);//burda 2 donusturme var
+
+        System.out.println("payload = " + payload);//map yazdırır
+
+         //direk string,objecte cevirdik .
         Map<String,Object> payload2 = mapper.readValue(expectedStr, new TypeReference<>(){});
 
-        System.out.println("payload = " + payload);
 
         // Send Request And Get Response
         Response response = given(spec).body(payload).post("{first}");
         response.prettyPrint();
 
         // Do Assertions
-        Map<String,Object> actualData = mapper.readValue(response.asString(), new TypeReference<>() {});
+       // Map<String,Object> actualDatax = mapper.readValue(response.asString(), Map.class);
+        Map<String,Object> actualData = mapper.readValue(response.asString(), new TypeReference<>(){});//pojoya dondurmus
         Assert.assertEquals(response.statusCode(),201);
         Assert.assertEquals(actualData.get("userId"),payload.get("userId"));
         Assert.assertEquals(actualData.get("title"),payload.get("title"));

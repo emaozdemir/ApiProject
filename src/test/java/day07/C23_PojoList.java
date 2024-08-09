@@ -55,8 +55,9 @@ public class C23_PojoList extends JsonPlaceHolderBaseUrl {
                 .body("[0].title",equalTo(expectedData.getTitle()))
                 .body("[0].completed",equalTo(expectedData.getCompleted()));
         // 2. Yöntem:
-        //List<JsonPlaceHolderPojo> actualData = response.as(List.class);
-        //System.out.println("actualData = " + actualData);
+        //düzhün bir yontem değil tercih edilmez
+        //List<JsonPlaceHolderPojo> actualData = response.as(List.class);//List.class obje listesine cevirir sonrada JsonPlaceHolderPojo ya cevirir
+        //System.out.println("actualData = " + actualData);//type castingler vs olur kayıplar olur hatalar cakısmalar olur
         /*
             Bu kod, JSON verilerini sadece bir List olarak döndürecektir.
         Ancak bu listenin içindeki nesnelerin türü Object olacaktır ve bu
@@ -70,9 +71,10 @@ public class C23_PojoList extends JsonPlaceHolderBaseUrl {
         List<JsonPlaceHolderPojo> actualDataList1 = response.as(new TypeRef<List<JsonPlaceHolderPojo>>(){});
         List<JsonPlaceHolderPojo> actualDataList = response.as(new TypeRef<>(){}); // Yeni sürümlerde datanın yukarıdaki gibi yazılmasına gerek kalmadı
         System.out.println("actualData = " + actualDataList);
+
         /*
         Map<String,Object> actualMap = response.as(Map.class);
-        Map<String,Object> actualMap2 = response.as(new TypeRef<>() {});
+        Map<String,Object> actualMap2 = response.as(new TypeRef<>() {});//garantici olmak istersek donusumleri boyle yaparız
 
          */
 
