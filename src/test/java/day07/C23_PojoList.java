@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class C23_PojoList extends JsonPlaceHolderBaseUrl {
     /*
+    map bir interfacetir
        Given
            https://jsonplaceholder.typicode.com/todos
        When

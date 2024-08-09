@@ -23,7 +23,7 @@ public class C22_DeleteRequest extends JsonPlaceHolderBaseUrl {
         And Response body is { }
 */
     @Test
-    public void deleteTest(){
+    public void deleteTest(){ //normalde delete yapınca databaseden silinir ama bu eğitim icin bir yer bu sekilde üstünde oynamalar yapabiliyoruz
         // Set Url
         spec.pathParams("first","todos"
                 ,"second",198);
@@ -39,14 +39,6 @@ public class C22_DeleteRequest extends JsonPlaceHolderBaseUrl {
         response
                 .then()
                 .body(equalTo("{}"));
-//        //2.yol
-//        String responseStr = response.asString();
-//        Map<String,Object> actualData = response.as(Map.class);
-//        System.out.println("actualData = " + actualData);
-//
-//        Assert.assertEquals(responseStr,"{}");
-//        Assert.assertTrue(actualData.isEmpty());
-//        Assert.assertEquals(actualData.size(),0);
 
         // 2. Yöntem
         String responseStr = response.asString();
@@ -55,7 +47,7 @@ public class C22_DeleteRequest extends JsonPlaceHolderBaseUrl {
         Assert.assertEquals(responseStr,"{}");
 
         // 3. Yöntem
-        Assert.assertTrue(actualData.isEmpty());
+        Assert.assertTrue(actualData.isEmpty());//actualData = {}
 
        // 4. Yöntem
         Assert.assertEquals(actualData.size(),0);
