@@ -6,48 +6,37 @@ import org.testng.annotations.Test;
 import pojos.PetPojo;
 import utilities.ObjectMapperUtils;
 
-import java.util.List;
-import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
+import static petstore.C03_CreatePetPojo.expectedData;
+import static petstore.C03_CreatePetPojo.petId;
 
-public class C03_CreatePetPojo extends PetStoreBaseUrl {
-
+public class C05_UpdatePet extends PetStoreBaseUrl {
     /*
     Given
         https://petstore.swagger.io/v2/pet
     And
-        {
+            {
               "id": 18,
               "category": {
                 "id": 0,
-                "name": "Kedi"
+                "name": "Köpek"
               },
-              "name": "Pamuk",
+              "name": "Çomar",
               "photoUrls": [
-                "url1", "url2", "url3"
+                "url1", "url2"
               ],
               "tags": [
                 {
                   "id": 0,
-                  "name": "Beyaz"
-                },
-                {
-                  "id": 1,
-                  "name": "Yavru"
-                },
-                {
-                  "id": 2,
-                  "name": "Sevimli"
+                  "name": "Kara"
                 }
-
               ],
-              "status": "available"
+              "status": "sold"
             }
 
        When
-            User send POST request
+            User send PUT request
        Then
             Status code should be 200
        And
@@ -56,76 +45,54 @@ public class C03_CreatePetPojo extends PetStoreBaseUrl {
               "id": 18,
               "category": {
                 "id": 0,
-                "name": "Kedi"
+                "name": "Köpek"
               },
-              "name": "Pamuk",
+              "name": "Çomar",
               "photoUrls": [
-                "url1", "url2", "url3"
+                "url1", "url2"
               ],
               "tags": [
                 {
                   "id": 0,
-                  "name": "Beyaz"
-                },
-                {
-                  "id": 1,
-                  "name": "Yavru"
-                },
-                {
-                  "id": 2,
-                  "name": "Sevimli"
+                  "name": "Kara"
                 }
-
               ],
-              "status": "available"
+              "status": "sold"
             }
      */
 
-    public static Integer petId;
-    public static PetPojo expectedData;
-
     @Test
-    void createPetTest() {
+    void updatePetTest() {
         //Set the url
         spec.pathParams("first", "pet");
 
         //Set the expected data
         String strExpectedData = """
-                        {
-                              "id": 18,
+                             {
                               "category": {
                                 "id": 0,
-                                "name": "Kedi"
+                                "name": "Köpek"
                               },
-                              "name": "Pamuk",
+                              "name": "Çomar",
                               "photoUrls": [
-                                "url1", "url2", "url3"
+                                "url1", "url2"
                               ],
                               "tags": [
                                 {
                                   "id": 0,
-                                  "name": "Beyaz"
-                                },
-                                {
-                                  "id": 1,
-                                  "name": "Yavru"
-                                },
-                                {
-                                  "id": 2,
-                                  "name": "Sevimli"
+                                  "name": "Kara"
                                 }
-
                               ],
-                              "status": "available"
+                              "status": "sold"
                             }
                 """;
 
         PetPojo expectedData = ObjectMapperUtils.convertJsonStrToJava(strExpectedData, PetPojo.class);
+        expectedData.setId(petId);
         System.out.println("expectedData = " + expectedData);
 
-
         //Send the request and get the response
-        Response response = given(spec).body(expectedData).post("{first}");
+        Response response = given(spec).body(expectedData).put("{first}");
         response.prettyPrint();
 
         //Do assertion
@@ -138,13 +105,8 @@ public class C03_CreatePetPojo extends PetStoreBaseUrl {
         assertEquals(actualData.getName(), expectedData.getName());
         assertEquals(actualData.getPhotoUrls().get(0), expectedData.getPhotoUrls().get(0));
         assertEquals(actualData.getPhotoUrls().get(1), expectedData.getPhotoUrls().get(1));
-        assertEquals(actualData.getPhotoUrls().get(2), expectedData.getPhotoUrls().get(2));
-        assertEquals(actualData.getTags().get(0).getName(), expectedData.getTags().get(0).getName());
-        assertEquals(actualData.getTags().get(1).getName(), expectedData.getTags().get(1).getName());
-        assertEquals(actualData.getTags().get(2).getName(), expectedData.getTags().get(2).getName());
+        assertEquals(actualData.getTags().getFirst().getName(), expectedData.getTags().getFirst().getName());
         assertEquals(actualData.getStatus(), expectedData.getStatus());
-
-       petId = actualData.getId();
 
     }
 }
