@@ -19,7 +19,7 @@ public class Generik_metodlar {
         System.out.println(resultBoolean); // Çıktı: true
     }
 
-    public  <T> T getValue(T input) {
+    public  <T> T getValue(T input) {//birden fazla data turu donen method generik meth
         return input;
 
             /*

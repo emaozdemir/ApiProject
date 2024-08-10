@@ -1,6 +1,6 @@
 package homework;
 
-import base_urls.SwaggerrBaseUrl;
+import base_urls.SwaggerBaseUrl;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +11,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class HW06 extends SwaggerrBaseUrl {
+public class HW06 extends SwaggerBaseUrl {
     /*
       Write an automation test that will create a 'user' using the "https://petstore.swagger.io/" document
     */

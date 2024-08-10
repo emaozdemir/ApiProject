@@ -1,9 +1,20 @@
 package day08;
 
+import base_urls.JsonPlaceHolderBaseUrl;
+import io.restassured.common.mapper.TypeRef;
+import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pojos.JsonPlaceHolderPojo;
+import utilities.ObjectMapperUtils;
 
-public class C28_PojoList {
-      /*
+import java.util.List;
+
+import static io.restassured.RestAssured.given;
+
+public class C28_PojoList extends JsonPlaceHolderBaseUrl {
+
+        /*
         Given
             https://jsonplaceholder.typicode.com/todos
         When
@@ -21,8 +32,46 @@ public class C28_PojoList {
      */
 
     @Test
-    public void test01(){
+    public void test(){
         // Set Url
-        // Write your code here
+        spec.pathParam("first","todos");
+
+        // Set Expected Data
+        String expectedStr = """
+                {
+                    "userId": 1,
+                    "id": 4,
+                    "title": "et porro tempora",
+                    "completed": true
+                }""";
+        System.out.println("expectedStr = " + expectedStr);
+
+        JsonPlaceHolderPojo expectedData = ObjectMapperUtils.convertJsonStrToJava(expectedStr, JsonPlaceHolderPojo.class);
+        System.out.println("expectedData = " + expectedData);
+
+        // Sent Request Get Ressponse
+        Response response = given(spec).when().get("{first}");
+        // response.prettyPrint();
+
+        // Do Assertion
+        // 1. Yol
+        List<JsonPlaceHolderPojo> actualDataList = response.as(new TypeRef<>() {});
+        System.out.println("actualDataList = " + actualDataList);
+
+        int idx = 0;
+        for (JsonPlaceHolderPojo eachPojo: actualDataList){
+            if (eachPojo.getTitle().equals(expectedData.getTitle())){
+                break;
+            }
+            idx++;
+        }
+        System.out.println(actualDataList.get(idx));
+        JsonPlaceHolderPojo actualData = actualDataList.get(idx);
+
+        Assert.assertEquals(response.statusCode(),200);
+        Assert.assertEquals(actualData.getUserId(),expectedData.getUserId());
+        Assert.assertEquals(actualData.getTitle(),expectedData.getTitle());
+        Assert.assertEquals(actualData.getCompleted(),expectedData.getCompleted());
+
     }
 }

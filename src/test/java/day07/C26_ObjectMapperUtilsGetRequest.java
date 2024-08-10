@@ -35,7 +35,7 @@ public class C26_ObjectMapperUtilsGetRequest extends RestFulBookerBaseUrl {
     public void test(){
         // Set Url
         spec.pathParams("first","booking"
-                ,"second",43);
+                ,"second",25);
 
         // Set Expected Data
         String expectedStr = """
@@ -45,7 +45,7 @@ public class C26_ObjectMapperUtilsGetRequest extends RestFulBookerBaseUrl {
                     "totalprice": 111,
                     "depositpaid": true,
                     "bookingdates": {
-                        "checkin": "2018-01-01",
+                        "checkin": "2018-01-01", 
                         "checkout": "2019-01-01"
                     },
                     "additionalneeds": "Extra pillows please"
