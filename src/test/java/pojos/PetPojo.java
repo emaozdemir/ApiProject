@@ -3,6 +3,7 @@ package pojos;
 import java.util.ArrayList;
 
 public class PetPojo {
+
     private Integer id;
 
     private Category category;
@@ -16,7 +17,10 @@ public class PetPojo {
     private String status;
 
 //    public PetPojo() {//de-serilization yaparken bu defaut const kullanır.
-//    }   //obje mapper kullanacağız defaolt bu olusuyor create etmicez gerek yok.
+//    }   //obje mapper kullanacağız default bu olusuyor create etmicez gerek yok.
+
+    //parametreli const neden yapmadık cunku; biz kendimiz elle değer girmeyeceğiz pli const manuel elle deger girilen yerlerde kullanılır
+    //biz obje mapper kullanacağız ve stringi direkt olarak pojoya cevirecek
 
     public Integer getId() {
         return id;

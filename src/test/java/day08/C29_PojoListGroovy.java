@@ -58,15 +58,18 @@ And
         JsonPath json = response.jsonPath();
 
 
-        Object actualData = json.getList("findAll{it.id==4}").getFirst(); // getList metodu bize responsu List<Object> olarak döndürüyor
+
 
         //id değeri 4 olan veriyi, JSON yanıtından çekmek için Groovy dili kullanılarak bir filtreleme yapılır. Çıkan sonuç JsonPlaceHolderPojo türünde bir liste olarak döner.
+
+        Object actualData = json.getList("findAll{it.id==4}").getFirst(); // getList metodu bize responsu List<Object> olarak döndürüyor
+
         // List<JsonPlaceHolderPojo> actualData = json.getList("findAll{it.id==4}"); // getList metodu bize responsu List<Object> olarak döndürüyor
 
 
         //Listenin ilk elemanı JSON stringine dönüştürülür.
         String StringJson = new ObjectMapper().writeValueAsString(actualData); // Object bize lazım olan Json formatındaki String dataya dönüştürür
-      //  String StringJson = new ObjectMapper().writeValueAsString(actualData.getFirst()); // Object bize lazım olan Json formatındaki String dataya dönüştürür
+        // String StringJson = new ObjectMapper().writeValueAsString(actualData.getFirst()); // Object bize lazım olan Json formatındaki String dataya dönüştürür
         String actualString2 = actualData.toString(); // Oluşan String Json Formatında olmadığı için Pojoya dönüştüremiyoruz
 
         System.out.println("StringJson = " + StringJson);

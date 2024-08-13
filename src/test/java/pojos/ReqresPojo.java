@@ -9,13 +9,13 @@ public class ReqresPojo {
 
     private String job;
 
-    public ReqresPojo() {//bos const. de-serilizationa yarar
-    }
-
-    public ReqresPojo(String name, String job) {
-        this.name = name;
-        this.job = job;
-    }
+//    public ReqresPojo() {//bos const. de-serilizationa yarar
+//    }
+//
+//    public ReqresPojo(String name, String job) {
+//        this.name = name;
+//        this.job = job;
+//    }
 
     public String getName() {
         return name;
