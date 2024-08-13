@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 
-public class C01_CreatePet extends PetStoreBaseUrl {
+public class C01_CreatePetHamcMatc extends PetStoreBaseUrl {
 
     /*
     Given

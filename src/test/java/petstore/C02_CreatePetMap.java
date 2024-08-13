@@ -126,7 +126,7 @@ public class C02_CreatePetMap extends PetStoreBaseUrl {
         response.prettyPrint();
 
         //Do assertion
-        Map actualData = ObjectMapperUtils.convertJsonStrToJava(response.asString(), Map.class);
+        Map actualData = ObjectMapperUtils.convertJsonStrToJava(response.asString(), Map.class);//responsu mapa ceviriyoruz
         System.out.println("actualData = " + actualData);
 
         assertEquals(response.statusCode(), 200);

@@ -7,6 +7,7 @@ import pojos.PetPojo;
 import utilities.ObjectMapperUtils;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertEquals;
 import static petstore.C03_CreatePetPojo.expectedData;
 import static petstore.C03_CreatePetPojo.petId;
@@ -44,7 +45,7 @@ public class C07_GetPetByIdNegative extends PetStoreBaseUrl {
         response.prettyPrint();
 
         //Do assertion
-
+        response.then().statusCode(404).body("message", equalTo("Pet not found"));
 
     }
 }
