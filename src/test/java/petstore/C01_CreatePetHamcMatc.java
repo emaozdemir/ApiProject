@@ -124,6 +124,7 @@ public class C01_CreatePet extends PetStoreBaseUrl {
                 "name",equalTo("Pamuk"),
                 "photoUrls", hasItems("url1", "url2", "url3"),
                 "tags.name", hasItems("Beyaz", "Yavru", "Sevimli"),
+                "tags[0].name", equalTo("Beyaz"),
                 "status", equalTo("available"));
 
     }
