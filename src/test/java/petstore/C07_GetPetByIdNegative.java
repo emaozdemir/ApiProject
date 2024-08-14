@@ -45,7 +45,10 @@ public class C07_GetPetByIdNegative extends PetStoreBaseUrl {
         response.prettyPrint();
 
         //Do assertion
-        response.then().statusCode(404).body("message", equalTo("Pet not found"));
+        response
+                .then()
+                .statusCode(404)
+                .body("message", equalTo("Pet not found"));
 
     }
 }

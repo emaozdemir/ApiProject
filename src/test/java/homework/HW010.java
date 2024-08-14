@@ -1,6 +1,9 @@
 package homework;
 
-public class HW010 {
+import base_urls.SpaceXDataBaseUrl;
+import org.testng.annotations.Test;
+
+public class HW010  extends SpaceXDataBaseUrl {
        /*
 Given
     https://api.spacexdata.com/v3/launches
@@ -19,4 +22,9 @@ And
 And
     The number of successful launches is greater than 50
  */
+    @Test
+    public void test01() {
+        spec.pathParams("first","launches");
+
+    }
 }

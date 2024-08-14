@@ -1,6 +1,6 @@
 package day10_booker_test;
 
-import base_urls.RestFullBookerBaseUrl;
+import base_urls.RestFulBookerBaseUrl;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static day10_booker_test.C01_CreateBooking.bookingId;
 import static io.restassured.RestAssured.given;
 
-public class C05_GetBookingNegative extends RestFullBookerBaseUrl {
+public class C05_GetBookingNegative extends RestFulBookerBaseUrl {
 
     @Test(dependsOnMethods = {"day10_booker_test.C01_CreateBooking.createBookingTest","day10_booker_test.C04_DeleteBooking.deleteBookingTest"})
     public void getBookingTest(){

@@ -120,7 +120,7 @@ public class C03_CreatePetPojo extends PetStoreBaseUrl {
                             }
                 """;
 
-        PetPojo expectedData = ObjectMapperUtils.convertJsonStrToJava(strExpectedData, PetPojo.class);
+        expectedData = ObjectMapperUtils.convertJsonStrToJava(strExpectedData, PetPojo.class);
         System.out.println("expectedData = " + expectedData);
 
 

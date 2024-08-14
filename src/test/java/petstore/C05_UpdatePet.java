@@ -66,29 +66,31 @@ public class C05_UpdatePet extends PetStoreBaseUrl {
         //Set the url
         spec.pathParams("first", "pet");
 
-        //Set the expected data
+        //Set the expected data    //"id": 18,
         String strExpectedData = """
-                             {
-                              "category": {
-                                "id": 0,
-                                "name": "Köpek"
-                              },
-                              "name": "Çomar",
-                              "photoUrls": [
-                                "url1", "url2"
-                              ],
-                              "tags": [
-                                {
-                                  "id": 0,
-                                  "name": "Kara"
-                                }
-                              ],
-                              "status": "sold"
-                            }
+                           {
+                                         
+                                           "category": {
+                                             "id": 0,
+                                             "name": "Köpek"
+                                           },
+                                           "name": "Çomar",
+                                           "photoUrls": [
+                                             "url1", "url2"
+                                           ],
+                                           "tags": [
+                                             {
+                                               "id": 0,
+                                               "name": "Kara"
+                                             }
+                                           ],
+                                           "status": "sold"
+                                         }
                 """;
 
         PetPojo expectedData = ObjectMapperUtils.convertJsonStrToJava(strExpectedData, PetPojo.class);
-        expectedData.setId(petId);
+      //  expectedData.setId(petId); //bunu yoruma alırsam benim ıd mı burdan alır ve kod sadece bu classta calısır ama ıd bağıımlı alıyoruz ve once c03 calısmalı once
+       expectedData.setId(petId);
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response

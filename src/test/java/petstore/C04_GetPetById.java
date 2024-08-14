@@ -62,7 +62,8 @@ public class C04_GetPetById extends PetStoreBaseUrl {
         spec.pathParams("first", "pet","second", petId);
 
         //Set the expected data
-        //Bir önceki class'ta oluşturulan aynı data
+        //Bir önceki class'ta oluşturulan aynı data oldugu icin ve hemen bundan once calisaca[i icin tekrar yapmadik
+        //asssertiona expectedData direkt geldi import ettik
 
         //Send the request and get the response
         Response response = given(spec).get("{first}/{second}");
