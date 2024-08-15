@@ -11,15 +11,19 @@ public class RestFulBookerBaseUrl {
 
     protected RequestSpecification spec;  // nulldir. Her methoddan önce spec objesine değer atamak istiyorum
 
+    public static String token;
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
+        if (token == null) {// olusmus bir token varsa onu kullanmaya devam edecek
+            token = generateToken();
+        }
         spec = new RequestSpecBuilder()
                 .setBaseUri("https://restful-booker.herokuapp.com")
-                .addHeader("Cookie","token="+ generateToken())
+                .addHeader("Cookie", "token=" + token)
                 .setContentType(ContentType.JSON)
                 .build();
     }
-
     /*
     Bu sınıfın setUp() metodu, her test methodundan önce çalışır
     ve RequestSpecBuilder sınıfından bir RequestSpecification nesnesi üretilir.

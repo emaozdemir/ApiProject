@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="booker_test">
+        <classes>
+            <class name="day10_booker_test.C01_CreateBooking"></class>
+            <class name="day10_booker_test.C02_GetBooking"></class>
+            <class name="day10_booker_test.C03_UpdateBooking"></class>
+            <class name="day10_booker_test.C04_DeleteBooking"></class>
+            <class name="day10_booker_test.C05_GetBookingNegative"></class>
+        </classes>
+
+    </test>
+</suite>

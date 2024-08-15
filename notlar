@@ -1,0 +1,18 @@
+"POJO" terimi "Plain Old Java Object" anlamına gelir ve Java'daki basit nesneleri ifade eder.
+ POJO'lar, genellikle veri taşıma amacıyla kullanılan, genellikle sadece alanlar (fields) ve
+ bu alanlar için getter ve setter yöntemleri içeren sınıflardır. Bu sınıfların özel bir tasarımı veya üst sınıflardan türemesi gerekmez.
+
+ //ObjectMapperUtils.convertJsonStrToJava: Bu method, String formatındaki JSON verisini Java nesnesine (POJO) dönüştürüyor.
+
+ pojoyu otomatik olustursun diye marketplaseden pojo generate ekledik
+
+ assert icin hamc mach.(body assertion )map var,pojo var.
+
+Authentication:Kimlik doğrulama (authentication), bir kullanıcının kimliğini doğrulamak için yapılan işlemdir.
+
+Bir kullanici adi ve sifre ile bir post isteği gönderip tokeni alır ardından bu tokeni sonraki isteklerin basliginda
+kimlik dogrulamasi olarak kullanabiliriz.(token alma methodumuz var ve diğer islemlerde kullanalım diye base_urlmize add header olarak cagiririz.)
+
+Authorization:Yetkilendirme (authorization) ise, doğrulanan kullanıcının hangi kaynaklara veya işlemlere erişim izni olduğunu belirler.
+
+ya xml ya da dependsOnMethods ile bagimli method/classlari calistiririz

@@ -15,7 +15,7 @@ public class C04_DeleteBooking extends RestFulBookerBaseUrl {
         spec.pathParams("first","booking"
         ,"second", bookingId);
 
-        String expectedStr = "Created";
+        String expectedStr = "Created";//jsona cevirecek bir formatta degil donen bir text .
 
         Response response = given(spec).when().delete("{first}/{second}");
         String actualStr = response.asString();

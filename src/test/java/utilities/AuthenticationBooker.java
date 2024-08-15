@@ -7,6 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class AuthenticationBooker {
 
+
     public static String generateToken(){
         String url = "https://restful-booker.herokuapp.com/auth";
         String credentials = """
