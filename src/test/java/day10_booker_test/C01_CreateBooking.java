@@ -7,14 +7,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pojos.BookingPojo;
 import pojos.BookingResponsePojo;
+import utilities.BookingResponseValidator;
 import utilities.ObjectMapperUtils;
 
 import static io.restassured.RestAssured.given;
 
 public class C01_CreateBooking extends RestFulBookerBaseUrl {
 
-    public static Integer bookingId;  // public --> projede herhangi bir yerden ulaşılacak,
-    // static --> object oluşturmaya gerek kalmayacak
+    public static Integer bookingId;  // public --> projede herhangi bir yerden ulaşılacak, baska packagelerden ulasırım
+    // static --> object create etmeye gerek kalmayacak just import
     public static BookingPojo payload;
     @Test
     public void createBookingTest(){
@@ -34,6 +35,7 @@ public class C01_CreateBooking extends RestFulBookerBaseUrl {
                     },
                     "additionalneeds" : "Breakfast"
                 }""";
+
         payload = ObjectMapperUtils.convertJsonStrToJava(payloadStr, BookingPojo.class);
 
         // Sent Request and Get Response
@@ -47,16 +49,21 @@ public class C01_CreateBooking extends RestFulBookerBaseUrl {
         // Do Assertions
         BookingResponsePojo actualData = ObjectMapperUtils.convertJsonStrToJava(response.asString(), BookingResponsePojo.class);
 
-        Assert.assertEquals(response.statusCode(),200);
-        Assert.assertEquals(actualData.getBooking().getFirstname(),payload.getFirstname());
-        Assert.assertEquals(actualData.getBooking().getLastname(),payload.getLastname());
-        Assert.assertEquals(actualData.getBooking().getTotalprice(),payload.getTotalprice());
-        Assert.assertEquals(actualData.getBooking().getDepositpaid(),payload.getDepositpaid());
-        Assert.assertEquals(actualData.getBooking().getBookingdates().getCheckin(),payload.getBookingdates().getCheckin());
-        Assert.assertEquals(actualData.getBooking().getBookingdates().getCheckout(),payload.getBookingdates().getCheckout());
-        Assert.assertEquals(actualData.getBooking().getAdditionalneeds(),payload.getAdditionalneeds());
+//        Assert.assertEquals(response.statusCode(),200);
+//        Assert.assertEquals(actualData.getBooking().getFirstname(),payload.getFirstname());
+//        Assert.assertEquals(actualData.getBooking().getLastname(),payload.getLastname());
+//        Assert.assertEquals(actualData.getBooking().getTotalprice(),payload.getTotalprice());
+//        Assert.assertEquals(actualData.getBooking().getDepositpaid(),payload.getDepositpaid());
+//        Assert.assertEquals(actualData.getBooking().getBookingdates().getCheckin(),payload.getBookingdates().getCheckin());
+//        Assert.assertEquals(actualData.getBooking().getBookingdates().getCheckout(),payload.getBookingdates().getCheckout());
+//        Assert.assertEquals(actualData.getBooking().getAdditionalneeds(),payload.getAdditionalneeds());
+
+
+        BookingResponseValidator.validateResponse(actualData.getBooking(),payload);
+
         bookingId = actualData.getBookingid();
-        System.out.println("bookingId = " + bookingId);
-        System.out.println("payload = " + payload);
+
+//        System.out.println("bookingId = " + bookingId);
+//        System.out.println("payload = " + payload);
     }
 }

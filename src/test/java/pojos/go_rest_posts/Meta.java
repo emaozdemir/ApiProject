@@ -1,21 +1,24 @@
 package pojos.go_rest_posts;
 
-public class Meta{
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Meta {
 	private Pagination pagination;
 
-	public void setPagination(Pagination pagination){
-		this.pagination = pagination;
-	}
 
-	public Pagination getPagination(){
+	public Pagination getPagination() {
 		return pagination;
 	}
 
+	public void setPagination(Pagination pagination) {
+		this.pagination = pagination;
+	}
+
 	@Override
- 	public String toString(){
-		return 
-			"Meta{" + 
-			"pagination = '" + pagination + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return "Meta{" +
+				"pagination=" + pagination +
+				'}';
+	}
 }

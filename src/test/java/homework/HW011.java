@@ -10,45 +10,14 @@ import utilities.ObjectMapperUtils;
 import static io.restassured.RestAssured.given;
 
 public class HW011 extends GorestBaseUrl {
-    /*
-    Given
-        https://gorest.co.in/public/v1/posts?id=148367
-    When
-        User sends GET request
-    Then
-        HTTP Status Code should be 200
-    And
-        Response body should be like:
-        {
-            "meta": {
-                "pagination": {
-                    "total": 1,
-                    "pages": 1,
-                    "page": 1,
-                    "limit": 10,
-                    "links": {
-                        "previous": null,
-                        "current": "https://gorest.co.in/public/v1/posts?page=1",
-                        "next": null
-                    }
-                }
-            },
-            "data": [
-                {
-                    "id": 148272,
-                    "user_id": 7339723,
-                    "title": "Thymum vicissitudo qui adficio tutis speculum textor solium.",
-                    "body": "Curatio consuasor vulgo. Dolorem omnis alter. Cicuta comedo nobis. Aduro subnecto umquam. Thermae vox comprehendo. Numquam aeneus cum. Contigo talus iure. Solvo capitulus vestigium. Acquiro crepusculum quas. Animus cibo dignissimos. Crur bos cornu. Vetus ademptio tabesco. Atrocitas terror acsi. Socius velum adeptio. Statim quia tabella. Adduco quia admiratio. Canis vel utroque. Sto sollers cometes."
-                }
-            ]
-        }
-    */
+
     @Test
-    public void test01(){
-        spec.pathParams("first","public", "second", "v1", "third", "posts")
+    public void test01() {
+        // Endpoint ve query parametreleri düzenleme
+        spec.pathParams("first", "posts")
                 .queryParam("id", 148367);
 
-        // Set Expected Data
+        // set the data
         String expectedStr = """
                 {
                     "meta": {
@@ -66,32 +35,30 @@ public class HW011 extends GorestBaseUrl {
                     },
                     "data": [
                         {
-                            "id": 148272,
-                            "user_id": 7339723,
-                            "title": "Thymum vicissitudo qui adficio tutis speculum textor solium.",
-                            "body": "Curatio consuasor vulgo. Dolorem omnis alter. Cicuta comedo nobis. Aduro subnecto umquam. Thermae vox comprehendo. Numquam aeneus cum. Contigo talus iure. Solvo capitulus vestigium. Acquiro crepusculum quas. Animus cibo dignissimos. Crur bos cornu. Vetus ademptio tabesco. Atrocitas terror acsi. Socius velum adeptio. Statim quia tabella. Adduco quia admiratio. Canis vel utroque. Sto sollers cometes."
-                        }
+                            "id": 148367,
+                            "user_id": 7342384,
+                            "title": "Cursim tripudio dolorem aufero assumenda templum voveo et cunae.",
+            "body": "Vindico theca acidus. Nisi audax stillicidium. Repellendus tantillus compono. Viscus quia adinventitias. Tabgo magnam vester. Praesentium blandior addo. Coadunatio comptus turbo. Atavus nihil desidero. Cerno triginta decipio. Modi velociter a. Animi suspendo umerus."                        }
                     ]
                 }""";
 
         RestHomeworkPojo expectedData = ObjectMapperUtils.convertJsonStrToJava(expectedStr, RestHomeworkPojo.class);
+        //ObjectMapperUtils.convertJsonStrToJava: Bu method, String formatındaki JSON verisini Java nesnesine (POJO) dönüştürüyor.
         System.out.println("Expected Data = " + expectedData);
 
-        // Send Request And Get Response
+        // send request and get response
         Response response = given(spec)
                 .when()
-                .get("/{first}/{second}/{third}");
+                .get("/{first}");
         response.prettyPrint();
 
-        // Do Assertions
-        response
-                .then()
-                .statusCode(200);
+        // do assertions
+        response.then().statusCode(200);
 
         RestHomeworkPojo actualData = ObjectMapperUtils.convertJsonStrToJava(response.asString(), RestHomeworkPojo.class);
         System.out.println("Actual Data = " + actualData);
 
-        // Meta Assertions
+        // Meta assertion
         Assert.assertEquals(actualData.getMeta().getPagination().getTotal(), expectedData.getMeta().getPagination().getTotal());
         Assert.assertEquals(actualData.getMeta().getPagination().getPages(), expectedData.getMeta().getPagination().getPages());
         Assert.assertEquals(actualData.getMeta().getPagination().getPage(), expectedData.getMeta().getPagination().getPage());
@@ -100,7 +67,7 @@ public class HW011 extends GorestBaseUrl {
         Assert.assertEquals(actualData.getMeta().getPagination().getLinks().getCurrent(), expectedData.getMeta().getPagination().getLinks().getCurrent());
         Assert.assertEquals(actualData.getMeta().getPagination().getLinks().getNext(), expectedData.getMeta().getPagination().getLinks().getNext());
 
-        // Data Assertions
+        // Data assertion
         Assert.assertEquals(actualData.getData().get(0).getId(), expectedData.getData().get(0).getId());
         Assert.assertEquals(actualData.getData().get(0).getUserId(), expectedData.getData().get(0).getUserId());
         Assert.assertEquals(actualData.getData().get(0).getTitle(), expectedData.getData().get(0).getTitle());
